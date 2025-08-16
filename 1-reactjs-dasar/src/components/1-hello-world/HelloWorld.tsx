@@ -1,6 +1,10 @@
-function HeaderHelloWorld() {
-  const text: string = "Hello World";
+import React from "react";
 
+interface TextProps {
+  text?: string;
+}
+
+function HeaderHelloWorld({ text = "Ups, lupa kasi teks" }: TextProps) {
   return (
     <h1 style={{ color: "red", backgroundColor: "aqua" }}>
       {text.toUpperCase()}
@@ -8,18 +12,23 @@ function HeaderHelloWorld() {
   );
 }
 
-function ParagraphHelloWorld() {
-  const text: string = "Selamat Belajar ReactJS dari Programmer Zaman Now";
-  const style = { color: "blue", backgroundColor: "yellow" };
+function ParagraphHelloWorld({ text = "Ups, lupa kasi teks" }: TextProps) {
+  const style: React.CSSProperties = {
+    color: "blue",
+    backgroundColor: "yellow",
+  };
 
   return <p style={style}>{text.toLowerCase()}</p>;
 }
 
 function HelloWorld() {
+  const props = {
+    text: "Selamat Belajar ReactJS dari Programmer Zaman Now",
+  };
   return (
     <div>
-      <HeaderHelloWorld />
-      <ParagraphHelloWorld />
+      <HeaderHelloWorld text="Hello World" />
+      <ParagraphHelloWorld {...props} />
     </div>
   );
 }
