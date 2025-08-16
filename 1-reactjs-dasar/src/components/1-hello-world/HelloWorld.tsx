@@ -1,22 +1,27 @@
-const HelloWorld = () => {
+function HeaderHelloWorld() {
+  const text: string = "Hello World";
+
+  return (
+    <h1 style={{ color: "red", backgroundColor: "aqua" }}>
+      {text.toUpperCase()}
+    </h1>
+  );
+}
+
+function ParagraphHelloWorld() {
+  const text: string = "Selamat Belajar ReactJS dari Programmer Zaman Now";
+  const style = { color: "blue", backgroundColor: "yellow" };
+
+  return <p style={style}>{text.toLowerCase()}</p>;
+}
+
+function HelloWorld() {
   return (
     <div>
-        <HeaderHelloWorld />
-        <ParagraphHelloWorld />
+      <HeaderHelloWorld />
+      <ParagraphHelloWorld />
     </div>
-  )
+  );
 }
 
-function HeaderHelloWorld(){
-    return (
-        <h1 >Hello World</h1>
-    )
-}
-
-function ParagraphHelloWorld(){
-    return (
-        <p>Selamat Belajar ReactJS dari Programmer Zaman Now</p>
-    )
-}
-
-export default HelloWorld
+export default HelloWorld;
