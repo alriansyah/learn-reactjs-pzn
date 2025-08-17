@@ -1,4 +1,3 @@
-import React from "react";
 import "./HelloWorld.css";
 
 interface TextProps {
@@ -10,10 +9,10 @@ function HeaderHelloWorld({ text = "Ups, lupa kasi teks" }: TextProps) {
 }
 
 function ParagraphHelloWorld({ text = "Ups, lupa kasi teks" }: TextProps) {
-  const style: React.CSSProperties = {
-    color: "blue",
-    backgroundColor: "yellow",
-  };
+  // const style: React.CSSProperties = {
+  //   color: "blue",
+  //   backgroundColor: "yellow",
+  // };
 
   return <p className="content">{text.toLowerCase()}</p>;
 }
