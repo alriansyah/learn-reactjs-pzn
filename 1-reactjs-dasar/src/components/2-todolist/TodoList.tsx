@@ -1,14 +1,14 @@
 import Todo from "./Todo";
 
 function TodoList() {
-  interface TodoProps {
+  interface TodoData {
     id: number;
     text: string;
     isCompleted: boolean;
     isDeleted?: boolean;
   }
 
-  const data: TodoProps[] = [
+  const data: TodoData[] = [
     {
       id: 0,
       text: "Learn HTML",
