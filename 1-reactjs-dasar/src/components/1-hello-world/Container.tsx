@@ -6,7 +6,14 @@ interface ContainerProps {
 
 function Container({ children }: ContainerProps) {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        width: "fit-content",
+      }}
+    >
       <h1>Programmer Zaman Now</h1>
       {children}
       <footer>
