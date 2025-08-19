@@ -1,13 +1,12 @@
 import { useState } from "react";
 
 function Counter() {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState<number>(0);
 
   console.log(`Rendering Counter ${counter}`);
-  
 
-  function handleClick() {
-    setCounter(counter + 1);
+  function handleClick(): void {
+    setCounter((prev) => prev + 1);
     console.log(counter);
   }
 
