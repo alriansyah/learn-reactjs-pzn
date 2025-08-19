@@ -7,6 +7,8 @@ import TodoList from "./components/2-todolist/TodoList.tsx";
 import Table from "./components/3-table/Table.tsx";
 import AlertButton from "./components/4-button/AlertButton.tsx";
 import MyButton from "./components/4-button/MyButton.tsx";
+import Toolbar from "./components/4-button/Toolbar.tsx";
+import SearchForm from "./components/5-form/SearchForm.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -16,6 +18,13 @@ createRoot(document.getElementById("root")!).render(
       <Table />
       <AlertButton text="Click me" message="You click me" />
       <MyButton text="Smash me" onSmash={() => alert("You smash me")} />
+      <Toolbar
+        onClick={(e) => {
+          e.stopPropagation();
+          alert("Toolbar button clicked");
+        }}
+      />
+      <SearchForm />
     </Container>
   </StrictMode>
 );
