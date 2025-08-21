@@ -6,7 +6,12 @@ function Counter() {
   console.log(`Rendering Counter ${counter}`);
 
   function handleClick(): void {
-    setCounter((prev) => prev + 1);
+    // setCounter((prev) => prev + 1);
+    // setCounter((prev) => prev + 1);
+    // setCounter((prev) => prev + 1);
+    setCounter(counter + 1);
+    setCounter(counter + 1);
+    setCounter(counter + 1);
     console.log(counter);
   }
 
