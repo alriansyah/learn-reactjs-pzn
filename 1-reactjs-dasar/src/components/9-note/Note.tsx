@@ -1,14 +1,20 @@
+import { useContext } from "react";
 import { useState } from "react";
 import type { NoteProps } from "./type";
+import { NotesDispatchContext } from "./NoteContext";
 
-function Note({ note, onChange, onDelete }: NoteProps) {
+function Note({ note }: NoteProps) {
+  const dispatch = useContext(NotesDispatchContext);
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   let component;
 
   function handleChangeText(e: React.ChangeEvent<HTMLInputElement>) {
-    const newNote = { ...note, text: e.target.value };
-    onChange(newNote);
+    dispatch({
+      ...note,
+      type: "CHANGE_NOTE",
+      text: e.target.value,
+    });
   }
 
   if (isEditing) {
@@ -28,15 +34,25 @@ function Note({ note, onChange, onDelete }: NoteProps) {
   }
 
   function handleChangeDone(e: React.ChangeEvent<HTMLInputElement>) {
-    const newNote = { ...note, done: e.target.checked };
-    onChange(newNote);
+    dispatch({
+      ...note,
+      type: "CHANGE_NOTE",
+      done: e.target.checked,
+    });
+  }
+
+  function handleDelete() {
+    dispatch({
+      type: "DELETE_NOTE",
+      id: note.id,
+    });
   }
 
   return (
     <label>
       <input type="checkbox" checked={note.done} onChange={handleChangeDone} />
       {component}
-      <button onClick={() => onDelete(note)}>Delete</button>
+      <button onClick={handleDelete}>Delete</button>
     </label>
   );
 }

@@ -6,8 +6,6 @@ export interface NoteType {
 
 export interface NoteProps {
   note: NoteType;
-  onChange: (note: NoteType) => void;
-  onDelete: (note: NoteType) => void;
 }
 
 export interface NoteListProps {
@@ -15,3 +13,8 @@ export interface NoteListProps {
   onChange: (note: NoteType) => void;
   onDelete: (note: NoteType) => void;
 }
+
+export type NoteAction =
+  | { type: "ADD_NOTE"; text: string }
+  | { type: "CHANGE_NOTE"; id: number; text: string; done: boolean }
+  | { type: "DELETE_NOTE"; id: number };

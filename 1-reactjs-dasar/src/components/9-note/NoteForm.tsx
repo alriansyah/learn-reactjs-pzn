@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { NotesDispatchContext } from "./NoteContext";
 
-interface NoteFormProps {
-  onAddNote: (note: string) => void;
-}
-
-function NoteForm({ onAddNote }: NoteFormProps) {
+function NoteForm() {
   const [text, setText] = useState<string>("");
+  const dispatch = useContext(NotesDispatchContext);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setText(e.target.value);
@@ -13,7 +11,10 @@ function NoteForm({ onAddNote }: NoteFormProps) {
 
   function handleClick() {
     setText("");
-    onAddNote(text);
+    dispatch({
+      type: "ADD_NOTE",
+      text: text,
+    });
   }
 
   return (
