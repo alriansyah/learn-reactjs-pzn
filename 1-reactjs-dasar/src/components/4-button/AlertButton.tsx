@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef } from "react";
 
 interface AlertButtonProps {
   text: string;
@@ -6,9 +6,13 @@ interface AlertButtonProps {
 }
 
 function AlertButton({ text, message }: AlertButtonProps) {
+  const counter = useRef<number>(0);
+  console.log(`counter: ${counter.current}`);
+  
+
   function handleClick(e: React.MouseEvent<HTMLButtonElement>): void {
     console.log(e);
-    alert(message);
+    alert(`${message} ${counter.current++}`);
   }
 
   return <button onClick={handleClick}>{text}</button>;
