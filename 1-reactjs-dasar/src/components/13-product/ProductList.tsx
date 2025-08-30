@@ -25,10 +25,14 @@ function ProductList() {
   useEffect(() => {
     console.info("Call Use Effect");
 
+    async function fetchProducts() {
+      const response = await fetch("/products.json");
+      const data: ProductType[] = await response.json();
+      setProducts(data);
+    }
+
     if (load) {
-      fetch("/products.json")
-        .then((res) => res.json() as Promise<ProductType[]>) // 👈 pastikan hasil fetch sesuai tipe
-        .then((data) => setProducts(data));
+      fetchProducts();
     }
 
     // cleanup / unmount function
