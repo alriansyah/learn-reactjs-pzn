@@ -1,9 +1,6 @@
+import type { ProductType } from "./ProductList";
 interface ProductProps {
-  product: {
-    id: number;
-    name: string;
-    price: number;
-  };
+  product: ProductType;
 }
 
 function Product({ product }: ProductProps) {

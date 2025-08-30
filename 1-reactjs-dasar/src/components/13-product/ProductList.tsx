@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Product from "./Product";
 
 export interface ProductType {
@@ -9,18 +9,26 @@ export interface ProductType {
 
 function ProductList() {
   const [products, setProducts] = useState<ProductType[]>([]);
-  const loaded = useRef<boolean>(false);
+  const [load, setLoad] = useState<boolean>(false);
 
-  // useEffect dijalankan setelah proses render selesai dan setiap kali ada perubahan nilai pada dependency yang digunakan
+  function handleClick(): void {
+    console.info(`Handle Click`);
+    setLoad(true);
+  }
+
+  // ✅ useEffect kosong → hanya jalan sekali saat mount
+  useEffect(() => {
+    console.info(`Call Use Effect with []`);
+  }, []); // useEffect dijalankan sekali saat component pertama kali di render, karena dependency array nya kosong / empty array
+
+  // ✅ useEffect dengan dependency, dijalankan setiap proses render atau setiap kali ada perubahan nilai pada dependency state/props yang digunakan
   useEffect(() => {
     console.info("Call Use Effect");
-    if (loaded.current === false) {
+
+    if (load) {
       fetch("/products.json")
-        .then((res) => res.json())
-        .then((data) => setProducts(data))
-        .then(() => {
-          loaded.current = true;
-        });
+        .then((res) => res.json() as Promise<ProductType[]>) // 👈 pastikan hasil fetch sesuai tipe
+        .then((data) => setProducts(data));
     }
 
     // cleanup / unmount function
@@ -30,11 +38,12 @@ function ProductList() {
     return () => {
       console.info("Product List component unmounted");
     };
-  });
+  }, [load]);
 
   return (
     <>
       <h1>Product List</h1>
+      <button onClick={handleClick}>Load Products</button>
       {products.map((product: ProductType) => (
         <Product product={product} key={product.id} />
       ))}
