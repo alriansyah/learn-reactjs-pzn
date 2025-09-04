@@ -6,6 +6,7 @@ import Data from "../components/data";
 import Product from "../components/product";
 import Customer from "../components/customer";
 import Seller from "../components/seller";
+import ProductDetail from "../components/product/ProductDetail";
 
 function AppRoute() {
   return (
@@ -15,6 +16,7 @@ function AppRoute() {
       <Route path="/data" element={<DataLayout />}>
         <Route index element={<Data />} />
         <Route path="products" element={<Product />} />
+        <Route path="products/:id" element={<ProductDetail />} />
         <Route path="customers" element={<Customer />} />
         <Route path="sellers" element={<Seller />} />
       </Route>
@@ -23,3 +25,5 @@ function AppRoute() {
 }
 
 export default AppRoute;
+
+// Support multiple params misal: products/:id/category/:categoryId/brand/:brandId
