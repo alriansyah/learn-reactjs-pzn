@@ -1,6 +1,8 @@
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useLocation } from "react-router";
 
 function DataLayout() {
+  const location = useLocation();
+
   return (
     <div className="flex flex-col gap-4">
       <div>
@@ -49,6 +51,11 @@ function DataLayout() {
       </div>
       <div>
         <p className="text-2xl font-bold">This is footer</p>
+        <p>
+          Location : {location.pathname}
+          {location.search}
+          {location.hash}
+        </p>
       </div>
     </div>
   );
