@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Link, Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
 
 function DataLayout() {
   return (
@@ -10,16 +10,30 @@ function DataLayout() {
       <div>
         <ul className="flex gap-4">
           <li className="w-fit border-b border-b-slate-400">
-            <Link to="/data/products">Products</Link>
+            <NavLink to="/data/products">Products</NavLink>
           </li>
           <li className="w-fit border-b border-b-slate-400">
-            <Link to="/data/sellers">Sellers</Link>
+            <NavLink
+              to="/data/sellers"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500" : "text-black"
+              }
+            >
+              Sellers
+            </NavLink>
           </li>
           <li className="w-fit border-b border-b-slate-400">
-            <Link to="/data/customers">Customers</Link>
+            <NavLink
+              to="/data/customers"
+              style={({ isActive }) => ({
+                color: isActive ? "green" : "black",
+              })}
+            >
+              Customers
+            </NavLink>
           </li>
           <li className="w-fit border-b border-b-slate-400">
-            <Link
+            <NavLink
               to={{
                 pathname: "/data/products",
                 search: "?category=shoes",
@@ -27,7 +41,7 @@ function DataLayout() {
               }}
             >
               Products
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
