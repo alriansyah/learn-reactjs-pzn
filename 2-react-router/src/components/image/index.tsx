@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 
 function Image() {
-  const params = useParams();
+  const params = useParams<{ "*": string | undefined }>();
 
   return (
     <>
