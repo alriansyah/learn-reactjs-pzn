@@ -7,6 +7,7 @@ import Product from "../components/product";
 import Customer from "../components/customer";
 import Seller from "../components/seller";
 import ProductDetail from "../components/product/ProductDetail";
+import ProductSearch from "../components/product/ProductSearch";
 import Image from "../components/image";
 import NotFound from "../components/not-found";
 
@@ -19,6 +20,7 @@ function AppRoute() {
       <Route path="/data" element={<DataLayout />}>
         <Route index element={<Data />} />
         <Route path="products" element={<Product />} />
+        <Route path="products/search" element={<ProductSearch />} />
         <Route path="products/:id" element={<ProductDetail />} />
         <Route path="customers" element={<Customer />} />
         <Route path="sellers" element={<Seller />} />
