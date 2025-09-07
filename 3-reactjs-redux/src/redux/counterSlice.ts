@@ -20,8 +20,12 @@ export const counterSlice = createSlice({
       state.value -= action.payload ?? 1;
     },
   },
+  selectors: {
+    getDoubleCounter: (state: CounterState) => state.value * 2,
+  },
 });
 
 export const { increment, decrement } = counterSlice.actions;
+export const { getDoubleCounter } = counterSlice.selectors;
 
 export default counterSlice.reducer;

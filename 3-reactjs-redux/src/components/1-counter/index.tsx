@@ -1,5 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../../redux/counterSlice";
+import {
+  increment,
+  decrement,
+  getDoubleCounter,
+} from "../../redux/counterSlice";
 import type { RootState, AppDispatch } from "../../redux/store";
 
 function Counter() {
@@ -14,9 +18,12 @@ function Counter() {
     dispatch(decrement());
   }
 
+  const doubleCounter = useSelector(getDoubleCounter);
+
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center gap-4">
+    <div className="w-full h-full flex flex-col justify-center items-center gap-4">
       <h1 className="text-3xl font-bold">Counter : {counter}</h1>
+      <h1 className="text-3xl font-bold">Double Counter : {doubleCounter}</h1>
       <div className="flex gap-1">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
