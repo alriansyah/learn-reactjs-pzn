@@ -1,10 +1,16 @@
+import "./index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router";
-import "./index.css";
+import { configureStore } from "@reduxjs/toolkit";
+import { counterSlice } from "./redux/counterSlice";
 
-const store = null;
+const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+  },
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
