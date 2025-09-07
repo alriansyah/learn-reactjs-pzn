@@ -25,10 +25,22 @@ function Counter() {
           Increment
         </button>
         <button
+          className="bg-green-500 text-white px-4 py-2 rounded"
+          onClick={() => dispatch(increment(2))}
+        >
+          Increment + 2
+        </button>
+        <button
           className="bg-red-500 text-white px-4 py-2 rounded"
           onClick={handleDecrement}
         >
           Decrement
+        </button>
+        <button
+          className="bg-yellow-500 text-white px-4 py-2 rounded"
+          onClick={() => dispatch(decrement(2))}
+        >
+          Decrement - 2
         </button>
       </div>
     </div>
