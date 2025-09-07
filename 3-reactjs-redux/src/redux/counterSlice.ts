@@ -12,7 +12,7 @@ const initialState: CounterState = {
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
-  reducers: {
+  reducers: { // untuk manipulasi state
     increment: (state, action: PayloadAction<number | undefined>) => {
       state.value += action.payload ?? 1;
     },
@@ -20,12 +20,15 @@ export const counterSlice = createSlice({
       state.value -= action.payload ?? 1;
     },
   },
-  selectors: {
+  selectors: { // untuk mengambil data state
     getDoubleCounter: (state: CounterState) => state.value * 2,
+    getDynamicCounter: (state: CounterState, value: number) => {
+      return state.value * value;
+    },
   },
 });
 
 export const { increment, decrement } = counterSlice.actions;
-export const { getDoubleCounter } = counterSlice.selectors;
+export const { getDoubleCounter, getDynamicCounter } = counterSlice.selectors;
 
 export default counterSlice.reducer;

@@ -3,6 +3,7 @@ import {
   increment,
   decrement,
   getDoubleCounter,
+  getDynamicCounter,
 } from "../../redux/counterSlice";
 import type { RootState, AppDispatch } from "../../redux/store";
 
@@ -19,11 +20,15 @@ function Counter() {
   }
 
   const doubleCounter = useSelector(getDoubleCounter);
+  const tripleCounter = useSelector((state: RootState) =>
+    getDynamicCounter(state, 3)
+  );
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center gap-4">
       <h1 className="text-3xl font-bold">Counter : {counter}</h1>
       <h1 className="text-3xl font-bold">Double Counter : {doubleCounter}</h1>
+      <h1 className="text-3xl font-bold">Triple Counter : {tripleCounter}</h1>
       <div className="flex gap-1">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
